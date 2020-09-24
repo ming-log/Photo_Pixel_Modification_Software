@@ -108,12 +108,13 @@ def save_img():
 
 
 window = tk.Tk()
+window.iconbitmap('tb.ico')
 window.title('Photo Pixel Modification Software V1.0.0')
 # size of image display box you want
 # 期望图像显示的大小
 w_box = 500
 h_box = 500
-window.geometry('500x600')  # 窗口尺寸
+window.geometry('500x630')  # 窗口尺寸
 # 创建一个菜单栏，这里我们可以把他理解成一个容器，在窗口的上方
 menubar = tk.Menu(window)
 # 定义一个空菜单单元
