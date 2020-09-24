@@ -107,6 +107,69 @@ def save_img():
     tk.messagebox.showinfo(title='成功', message='保存成功！')
 
 
+def change_img_type():
+    def change_info():
+        save_path = tk.filedialog.asksaveasfilename(title=u'保存文件')
+        save_path = save_path + change_type.get()
+        pil_image.save(save_path)
+        tk.messagebox.showinfo(title='成功', message='保存成功！')
+    change_window = tk.Toplevel(window)
+    change_window.geometry('200x200')
+    change_window.title('请输入要修改的相关参数')
+
+    tk.Label(change_window, text='宽度(像素): ').place(x=10, y=10)
+    entry_x_pix = tk.Entry(change_window, textvariable=x_pix, width=15)
+    entry_x_pix.place(x=80, y=10)
+
+    tk.Label(change_window, text='高度(像素): ').place(x=10, y=40)
+    entry_y_pix = tk.Entry(change_window, textvariable=y_pix, width=15)
+    entry_y_pix.place(x=80, y=40)
+
+    tk.Label(change_window, text='请选择图片类型:').place(x=10, y=70)
+    # 插入单选按钮控件；显示一个单选的按钮状态
+    radiobutton1 = tk.Radiobutton(change_window,  # 作用与window窗口
+                                  text='jpg',  # 按钮显示Option A
+                                  variable=change_type,  # 点击按钮后作用于变量change_type
+                                  value='.jpg',  # 将value值传给change_type
+                                  )  # 点击按钮后执行print_selection操作
+    radiobutton1.place(x=40, y=90)
+
+    # 插入单选按钮控件；显示一个单选的按钮状态
+    radiobutton2 = tk.Radiobutton(change_window,  # 作用与window窗口
+                                  text='png',  # 按钮显示Option A
+                                  variable=change_type,  # 点击按钮后作用于变量change_type
+                                  value='.png',  # 将value值传给change_type
+                                  )  # 点击按钮后执行print_selection操作
+    radiobutton2.place(x=110, y=90)
+
+    # 插入单选按钮控件；显示一个单选的按钮状态
+    radiobutton3 = tk.Radiobutton(change_window,  # 作用与window窗口
+                                  text='ico',  # 按钮显示Option A
+                                  variable=change_type,  # 点击按钮后作用于变量change_type
+                                  value='.ico',  # 将value值传给change_type
+                                  )  # 点击按钮后执行print_selection操作
+    radiobutton3.place(x=40, y=115)
+
+    # 插入单选按钮控件；显示一个单选的按钮状态
+    radiobutton4 = tk.Radiobutton(change_window,  # 作用与window窗口
+                                  text='jpeg',  # 按钮显示Option A
+                                  variable=change_type,  # 点击按钮后作用于变量change_type
+                                  value='.jpeg',  # 将value值传给change_type
+                                  )  # 点击按钮后执行print_selection操作
+    radiobutton4.place(x=110, y=115)
+
+    # 插入单选按钮控件；显示一个单选的按钮状态
+    radiobutton5 = tk.Radiobutton(change_window,  # 作用与window窗口
+                                  text='gif',  # 按钮显示Option A
+                                  variable=change_type,  # 点击按钮后作用于变量change_type
+                                  value='.gif',  # 将value值传给change_type
+                                  )  # 点击按钮后执行print_selection操作
+    radiobutton5.place(x=40, y=140)
+
+    ok_btn = tk.Button(change_window, text='确定', command=change_info)
+    ok_btn.place(x=155, y=160)
+
+
 window = tk.Tk()
 window.iconbitmap('tb.ico')
 window.title('Photo Pixel Modification Software V1.0.0')
@@ -125,12 +188,15 @@ if not open_img_flag:
     tk.Label(window, text='目前支持的文件格式有:jpg、png、jpeg、gif、ico等', font=('宋体', 10)).place(x=100, y=250)
 # 将上面定义的空菜单命名为`Open`，放在菜单栏中，就是装入那个容器中
 menubar.add_cascade(label='Open', command=open_img, font=('Arial', 10))
+menubar.add_cascade(label='change type', command=change_img_type, font=('Arial', 10))
 # 同样的在`File`中加入`Exit`小菜单,此处对应命令为`window.quit`
 menubar.add_cascade(label='Exit', command=window.quit, font=('Arial', 10))
+
 x_pix = tk.StringVar()
 y_pix = tk.StringVar()
 x_dpi = tk.StringVar()
 y_dpi = tk.StringVar()
+change_type = tk.StringVar()
 
 bt1 = tk.Button(window, text='修改像素', width=15, height=2, command=change_pix, bg='grey')
 bt1.place(x=100, y=550)
