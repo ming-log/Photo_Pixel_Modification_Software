@@ -197,7 +197,7 @@ y_pix = tk.StringVar()
 x_dpi = tk.StringVar()
 y_dpi = tk.StringVar()
 change_type = tk.StringVar()
-
+change_type.set('.jpg')
 bt1 = tk.Button(window, text='修改像素', width=15, height=2, command=change_pix, bg='grey')
 bt1.place(x=100, y=550)
 
